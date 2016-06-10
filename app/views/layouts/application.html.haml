@@ -10,6 +10,7 @@
     .authentication
       - if current_user
         email: #{current_user.email}
+        username: #{current_user.username}
         = link_to "Sign Out", destroy_user_session_path, method: :delete 
       - else
         = link_to "Sign Up", new_user_registration_path
