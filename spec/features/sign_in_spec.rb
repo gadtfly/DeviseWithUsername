@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "signing in" do
-  let(:user) { User.create!(email: 'test@example.com', password: '12345678') }
+  let(:user) { User.create!(username: 'testuser', email: 'test@example.com', password: '12345678') }
 
   scenario "with email is successful" do
     visit('/')
