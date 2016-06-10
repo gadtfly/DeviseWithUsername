@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "signing out" do
-  let(:user) { User.create!(username: 'testuser', email: 'test@example.com', password: '12345678') }
+  let(:user) { User.create!(username: 'testuser', password: '12345678') }
   
   before do
     visit('/')

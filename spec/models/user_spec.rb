@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(username: 'testuser', email: 'test@example.com', password: '12345678') }
+  let(:user) { User.new(username: 'testuser', password: '12345678') }
 
   describe 'username attribute' do
     it 'can be valid' do
@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
 
     it 'is invalid when not unique' do
       user.save!
-      other_user = User.new(email: 'test2@example.com', password: user.password, username: user.username)
+      other_user = User.new(password: user.password, username: user.username)
       expect(other_user).to_not be_valid
     end
 
