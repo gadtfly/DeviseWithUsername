@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true, format: {without: /[\s@]/}
 
-  attr_reader :username_or_email
+  attr_accessor :username_or_email
 
   def self.find_for_database_authentication(warden_conditions)
     username_or_email = warden_conditions[:username_or_email]

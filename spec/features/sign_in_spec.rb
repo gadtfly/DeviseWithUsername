@@ -20,4 +20,14 @@ feature "signing in" do
     click_button('Log in')
     expect(page).to have_content('Signed in successfully')
   end
+
+  scenario "with wrong credentials retains 'Username or email' field" do
+    visit('/')
+    click_link('Sign In')
+    fill_in('Username or email', with: user.email)
+    fill_in('Password', with: '')
+    click_button('Log in')
+    expect(page).to_not have_content('Signed in successfully')
+    expect(page.find_field('Username or email').value).to eq(user.email)
+  end
 end
