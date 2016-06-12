@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, presence: true, uniqueness: true, format: {without: /\s/}
+  validates :username, presence: true, uniqueness: true, format: {without: /[\s@]/}
 
   attr_reader :username_or_email
 

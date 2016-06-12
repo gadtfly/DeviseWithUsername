@@ -24,4 +24,16 @@ feature "signing up" do
     click_button('Sign up')
     expect(page).to have_content('signed up successfully')
   end
+
+  scenario "with username the same as another user's email is unsuccessful" do
+    visit('/')
+    click_link('Sign Up')
+    fill_in('Username', with: user.email)
+    fill_in('Email', with: 'other@example.com')
+    fill_in('Password', with: user.password)
+    fill_in('Password confirmation', with: user.password)
+    click_button('Sign up')
+    expect(page).to_not have_content('signed up successfully')
+    expect(page).to have_content('error')
+  end
 end
